@@ -14,7 +14,7 @@
 **********************************************************************/
 
 
-module Nbit_4x1mux #(parameter N = 8) (
+module Nbit_4x1mux #(parameter N = 32) (
     input [N-1:0] A, B, C, D,
     input [1:0] select,
     output reg [N-1:0] out

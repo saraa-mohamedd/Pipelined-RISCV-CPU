@@ -9,6 +9,7 @@
 * Description: ALU of RISCV
 *
 * Change history: 09/04/2023 - taken from code offered in project description
+*                 26/04/2023 - added support for RISCV-32M instructions (multiply/divide/remainder)
 *
 **********************************************************************/
 
@@ -17,7 +18,7 @@ module prv32_ALU(
 	input   wire [4:0]  shamt,
 	output  reg signed [31:0] r,
 	output  wire        cf, zf, vf, sf,
-	input   wire [3:0]  alufn
+	input   wire [4:0]  alufn
 );
 
     wire [31:0] add, sub, op_b;
@@ -39,20 +40,33 @@ module prv32_ALU(
         (* parallel_case *)
         case (alufn)
             // arithmetic
-            4'b00_00 : r = add;
-            4'b00_01 : r = add;
-            4'b00_11 : r = b;
+            `ALU_ADD    :   r = add;
+            `ALU_SUB    :   r = add;
+            `ALU_PASS   :   r = b;
             // logic
-            4'b01_00:  r = a | b;
-            4'b01_01:  r = a & b;
-            4'b01_11:  r = a ^ b;
+            `ALU_OR     :   r = a | b;
+            `ALU_AND    :   r = a & b;
+            `ALU_XOR    :   r = a ^ b;
             // shift
-            4'b10_00:  r=sh;
-            4'b10_01:  r=sh;
-            4'b10_10:  r=sh;
+            `ALU_SRL    :   r = sh;
+            `ALU_SLL    :   r = sh;
+            `ALU_SRA    :   r = sh;
             // slt & sltu
-            4'b11_01:  r = {31'b0,(sf != vf)}; 
-            4'b11_11:  r = {31'b0,(~cf)};            	
+            `ALU_SLT    :   r = {31'b0,(sf != vf)}; 
+            `ALU_SLTU   :   r = {31'b0,(~cf)};
+            // multiplication
+            `ALU_MUL    :   r = ($signed(a)*$signed(b));
+            `ALU_MULH   :   r = ($signed(a)*$signed(b)) >> 32;
+            `ALU_MULSU  :   r = ($signed(a)*b) >> 32;
+            `ALU_MULU   :   r = (a*b) >> 32;
+            // division
+            `ALU_DIV    :   r = $signed(a)/$signed(b);
+            `ALU_DIVU   :   r = a/b;
+            // remainder
+            `ALU_REM    :   r = $signed(a)%$signed(b);
+            `ALU_REMU   :   r = a%b;
+            
+            default     :   r = 0;
         endcase
     end
 endmodule

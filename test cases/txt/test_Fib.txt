@@ -1,0 +1,27 @@
+addi a0, x0, 5
+jal ra, FIBB
+ebreak
+
+FIBB:
+addi t0, a0, -1 #get n-1
+bgt t0, x0, L1 #compare with 0
+addi a0, x0, 1 #if less, return 1
+jalr x0, ra, 0
+L1:
+addi sp, sp, -8 #alloacte memory in stack
+sw ra, 4(sp)
+sw a0, 0(sp)
+addi a0, a0, -1 #get n-1
+jal ra, FIBB #calculate fibb(n-1)
+addi t1, a0, 0 #store in temp register
+lw t0 0(sp) #restore arguments
+sw a0, 0(sp)
+addi a0, t0, -2 #get n-2
+jal ra, FIBB #call fibb(n-2)
+lw t0, 0(sp)
+add a0, a0, t0 #add fibb(n-2) to fibb(n-1)
+lw ra, 4(sp)
+addi sp, sp, 8 #clear memory
+jalr x0, ra, 0
+
+1 1 2 3 5 8 13 21 34 55
