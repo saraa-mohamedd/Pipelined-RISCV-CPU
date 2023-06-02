@@ -1,0 +1,42 @@
+lw x1, 0(x0) # x1 = 17
+lw x2, 4(x0) # x2 = 9
+
+beq x1, x1, L1
+F1: beq x1, x2, L2
+F2: blt x1, x2, L3
+F3: blt x2, x1, L4
+F4: bge x1, x2, L5
+F5: bge x2, x1, L6
+F6: bne x1, x2, L7
+F7: bne x1, x1, L8
+F8: bltu x1, x2, L9
+F9: bltu x2, x1, L10
+F10: bgeu x1, x2, L11
+F11: bgeu x2, x1, L12
+
+
+L1: add x0, x0, x0
+beq x0, x0, F1
+L2: add x0, x0, x0
+beq x0, x0, F2
+L3: add x0, x0, x0
+beq x0, x0, F3
+L4: add x0, x0, x0
+beq x0, x0, F4
+L5: add x0, x0, x0
+beq x0, x0, F5
+L6: add x0, x0, x0
+beq x0, x0, F6
+L7:add x0, x0, x0
+beq x0, x0, F7
+L8:add x0, x0, x0
+beq x0, x0, F8
+L9:add x0, x0, x0
+beq x0, x0, F9
+L10:add x0, x0, x0
+beq x0, x0, F10
+L11:add x0, x0, x0
+beq x0, x0, F11
+L12: add x0, x0, x0
+add x0, x0, x0
+

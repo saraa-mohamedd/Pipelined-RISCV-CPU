@@ -1,0 +1,8 @@
+auipc x1, 365
+addi x2, x0, 4
+jalr x3, 12(x2)
+addi x4, x0, 14
+jal x3, L1
+addi x0, x0, 0
+addi x0, x0, 0
+L1: addi x5, x0, -5

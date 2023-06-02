@@ -1,0 +1,11 @@
+addi x1, x0, 17
+addi x3, x1, 9 # x3 = 26
+addi x3, x1, -9 # x3 = 8
+andi x3, x1, 9 # x3 = 1
+ori x3, x1, 9 # x3 = 25
+xori x3, x1, 9 # x3 = 24
+slli x3, x1, 9 # x3 = 8704
+slti x3, x1, 9 # x3 = 0
+sltiu x3, x1, 9 # x3 = 0
+srli x3, x1, 9 # x3 = 0
+srai x3, x1, 9 # x3 = 0

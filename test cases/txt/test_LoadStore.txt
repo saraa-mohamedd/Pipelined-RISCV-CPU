@@ -1,0 +1,10 @@
+lw x1, 12(x0) # x1 = FFFFAAAA
+lb x1, 12(x0) # x1 = FFFFFFAA
+lbu x1, 12(x0) # x1 = 000000AA
+lh x1, 12(x0) # x1 = FFFFAAAA
+lhu x1, 12(x0) # x1 = 0000AAAA
+
+lw x2, 16(x0) # x2 = FFFFABCD
+sw x2, 20(x0) # MEM[5] = FFFFABCD
+sh x2, 24(x0) # MEM[6] = 0000ABCD
+sb x2, 28(x0) # MEM[7] = 000000CD
