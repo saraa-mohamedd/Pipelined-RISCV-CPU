@@ -10,3 +10,7 @@ Output calues can be viewed using an IDE for Verilog HDL (such as Vivado by XILI
 
 ## Testing
 For testing, refer to the **Testing** section in the *Report* pdf of this repository.
+
+## Contributors
+- [Sara Mohamed](https://github.com/saraa-mohamedd)
+- [Mohamed Sherif Noureldin](https://github.com/MohamedSherifNoureldin)
