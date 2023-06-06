@@ -6,7 +6,7 @@ This project also supports implementation on a Nexys A7 board, with push buttons
 Inputs to the processor can be entered through a file with the proper format. Since the RISCV architecture supports a byte addressable, little endian memory, input from file should be in hex, split up into bytes in little endian format. Refer to the *Report* pdf of this repository for examples and more details.
 
 #### Outputs
-Output calues can be viewed using an IDE for Verilog HDL (such as Vivado by XILINX) either through a simulation (see ```CPU_tb.v``` for the testbench) or through generating the bitstream and coding it onto a Nexys A7 board.
+Output values can be viewed using an IDE for Verilog HDL (such as Vivado by XILINX) either through a simulation (see ```CPU_tb.v``` for the testbench) or through generating the bitstream and coding it onto a Nexys A7 board.
 
 ## Testing
 For testing, refer to the **Testing** section in the *Report* pdf of this repository.
